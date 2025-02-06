@@ -47,6 +47,18 @@ export default function AdminLogin() {
         >
           Login
         </button>
+        
+       <div className="mt-6 ml-8 text-center ">
+        <h1 className="font-bold">Login Details</h1>
+        <ul className="flex justify-center gap-8 ">
+          <li>
+             email: <span className="pl-2">misbahbaloch@gmail.com</span>
+          </li>
+          <li>
+            password: AgenticAI
+          </li>
+          </ul>
+          </div>
       </form>
     </div>
   );
