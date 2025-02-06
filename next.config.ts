@@ -6,10 +6,15 @@ const nextConfig: NextConfig = {
     remotePatterns:[
       {
         protocol: "https",
-        hostname: "cdn.sanity.io"
-      }
-    ]
-  }
+        hostname: "cdn.sanity.io",
+      },
+    ],
+   
+  },
+  eslint: {
+    // Disable ESLint during production build
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

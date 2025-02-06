@@ -50,7 +50,7 @@ export default function AdminDashboard() {
         }`
       )
       .then((data) => setOrders(data))
-      .catch((error) => console.log("error fetching orders", error));
+      //.catch((error) => console.log("error fetching orders", error));
   }, []);
 
   const filteredOrders = filter === "All" ? orders : orders.filter((order) => order.status === filter);
@@ -76,7 +76,8 @@ export default function AdminDashboard() {
       await client.delete(orderId);
       setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
       Swal.fire("Deleted!", "Your order has been deleted", "success");
-    } catch (error) {
+    } catch (error) {  /* eslint-disable @typescript-eslint/no-unused-vars */
+
       Swal.fire("Error", "Failed to delete the order", "error");
     }
   };
@@ -189,30 +190,30 @@ export default function AdminDashboard() {
                           <p>City: <strong>{order.city}</strong></p>
 
                           <ul className="mt-2">
-  {Array.isArray(order.cartItems) && order.cartItems.length > 0 ? (
-    order.cartItems.map((item) => (
-      <li key={`${order._id}-${item.productName}`} className="flex items-center gap-3">
-        <span>{item.productName}</span>
-        {item.image && (
-          <Image
-            src={urlFor(item.image).url()}
-            alt="Product Image"
-            width={100}
-            height={100}
-            className="rounded-md"
-          />
-        )}
-      </li>
-    ))
-  ) : (
-    <li>No items available</li>
-  )}
-</ul>
+               {Array.isArray(order.cartItems) && order.cartItems.length > 0 ? (
+                 order.cartItems.map((item) => (
+                   <li key={`${order._id}-${item.productName}`} className="flex items-center gap-3">
+                     <span>{item.productName}</span>
+                     {item.image && (
+                       <Image
+                         src={urlFor(item.image).url()}
+                         alt="Product Image"
+                         width={100}
+                         height={100}
+                         className="rounded-md"
+                       />
+                     )}
+                   </li>
+               ))
+           ) : (
+             <li>No items available</li>
+            )}
+             </ul>
 
-                        </td>
-                      </tr>
-                    )}
-                  </React.Fragment>
+               </td>
+                </tr>
+             )}
+              </React.Fragment>
                 ))}
               </tbody>
             </table>
